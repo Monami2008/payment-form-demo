@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Payment Checkout</title>
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- International Phone Input Library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Visual Side: The Interactive Card -->
+        <div class="card-visual-area">
+            <div class="card-scene">
+                <div class="card-object" id="cardObject">
+                    <!-- Front of Card -->
+                    <div class="card-face front">
+                        <div class="card-logo">
+                            <i class="fa-brands fa-cc-visa" id="cardBrandLogo"></i>
+                        </div>
+                        <div class="chip"></div>
+                        <div class="card-number-display" id="displayCardNumber">#### #### #### ####</div>
+                        <div class="card-details-display">
+                            <div class="detail-group">
+                                <label>Card Holder</label>
+                                <span id="displayName">YOUR NAME</span>
+                            </div>
+                            <div class="detail-group">
+                                <label>Expires</label>
+                                <span id="displayExpiry">MM/YY</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Back of Card -->
+                    <div class="card-face back">
+                        <div class="magnetic-strip"></div>
+                        <div class="cvv-strip">
+                            <span id="displayCvv">***</span>
+                        </div>
+                        <div style="text-align: center; font-size: 10px; color: #aaa; margin-top: 10px;">
+                            This card is property of the issuing bank.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 10px;">
+                <p style="font-size: 13px; color: #6b7280; font-weight: 500;">Secure Payment Gateway</p>
+            </div>
+        </div>
+
+        <!-- Functional Side: The Form -->
+        <div class="form-area">
+            <div class="header">
+                <h2>Payment Details</h2>
+                <p>Complete your purchase securely.</p>
+            </div>
+
+            <form id="paymentForm" novalidate>
+                <div class="form-grid">
+                    <!-- Full Name -->
+                    <div class="form-group full-width">
+                        <label for="fullName">Full Name</label>
+                        <div class="input-wrapper">
+                            <i class="fa-regular fa-user icon"></i>
+                            <input type="text" id="fullName" placeholder="e.g. John Doe" required>
+                        </div>
+                        <div class="error-msg">Please enter your full name.</div>
+                    </div>
+
+                    <!-- Phone Number -->
+                    <div class="form-group full-width">
+                        <label for="phone">Phone Number</label>
+                        <div class="input-wrapper phone-input-container">
+                            <input type="tel" id="phone" placeholder="(555) 000-0000" required>
+                        </div>
+                        <div class="error-msg">Please enter a valid phone number.</div>
+                    </div>
+
+                    <!-- Card Number -->
+                    <div class="form-group full-width">
+                        <label for="cardNumber">Card Number</label>
+                        <div class="input-wrapper">
+                            <i class="fa-regular fa-credit-card icon"></i>
+                            <input type="text" id="cardNumber" class="credit-card-input"
+                                placeholder="1234 5678 9012 3456" maxlength="19" required>
+                        </div>
+                        <div class="error-msg">Card number is invalid.</div>
+                    </div>
+
+                    <!-- Expiry Date -->
+                    <div class="form-group">
+                        <label for="expiryDate">Expiration Date</label>
+                        <div class="input-wrapper">
+                            <i class="fa-regular fa-calendar icon"></i>
+                            <input type="text" id="expiryDate" placeholder="MM/YY" maxlength="5" required>
+                        </div>
+                        <div class="error-msg">Invalid date.</div>
+                    </div>
+
+                    <!-- CVV -->
+                    <div class="form-group">
+                        <label for="cvv">CVV</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-lock icon"></i>
+                            <input type="password" id="cvv" placeholder="123" maxlength="4" required>
+                        </div>
+                        <div class="error-msg">3 or 4 digits.</div>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    <span>Pay Now</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </form>
+
+            <div class="badges">
+                <div class="badge"><i class="fa-solid fa-shield-halved"></i> SSL Encrypted</div>
+                <div class="badge"><i class="fa-brands fa-cc-visa"></i> <i class="fa-brands fa-cc-mastercard"></i></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <i class="fa-solid fa-circle-check"></i>
+        <div class="toast-content">
+            <h4>Success!</h4>
+            <p>Payment processed securely.</p>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
